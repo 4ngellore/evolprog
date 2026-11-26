@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evolprog — Еволюція мов програмування</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-transition" id="pageTransition"></div>
+
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">evolprog</a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="scroll-tabs-wrapper" id="scrollTabsTrack">
+            <div class="sticky-tabs-container">
+                <div class="container">
+                    <!-- Верхні вкладки перемикання -->
+                    <div class="full-tabs-bar">
+                        <div class="tab-glider" id="tabGlider"></div>
+                        <button class="tab-btn active" data-tab="0">01 · Витоки та Асемблер</button>
+                        <button class="tab-btn" data-tab="1">02 · Класика та Мова C</button>
+                        <button class="tab-btn" data-tab="2">03 · Генеалогія та ООП</button>
+                        <button class="tab-btn" data-tab="3">04 · AI та Майбутнє коду</button>
+                    </div>
+
+                    <!-- Контейнер панелей каруселі -->
+                    <div class="panels-container">
+                        <!-- Слайд 1 -->
+                        <div class="tab-panel active">
+                            <div class="panel-text">
+                                <h2>Машинний код та Асемблер</h2>
+                                <p>Від бінарних послідовностей 0 і 1 та перфокарт 1940-х років до символічних мнемонік, на яких програмували перші обчислювальні гіганти на кшталт ENIAC.</p>
+                                <a href="epochs.html#epoch-1" class="btn-white learn-more-btn">ДІЗНАТИСЯ БІЛЬШЕ</a>
+
+                                <div class="highlights-section">
+                                    <h4>Ключові віхи</h4>
+                                    <p>Бінарний фундамент <span>Машинний код 0 і 1 та перфокарти</span></p>
+                                    <p>Перші програми <span>Мова асемблера для комп'ютера ENIAC</span></p>
+                                    <p>Символічні команди <span>Мнемоніки регістрів ADD, SUB, MOV</span></p>
+                                </div>
+                            </div>
+                            <div class="visual-frame">
+                                <canvas class="point-cloud-canvas" data-shape="crystal"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 2 -->
+                        <div class="tab-panel">
+                            <div class="panel-text">
+                                <h2>Високорівневі мови та C</h2>
+                                <p>Перехід від апаратних тонкощів до зрозумілої логіки: науковий Fortran, фінансовий COBOL та революційна мова C, яка подарувала світу UNIX і портативність.</p>
+                                <a href="epochs.html#epoch-3" class="btn-white learn-more-btn">ДІЗНАТИСЯ БІЛЬШЕ</a>
+
+                                <div class="highlights-section">
+                                    <h4>Ключові віхи</h4>
+                                    <p>Перші компілятори <span>Fortran (1957) та бізнес-мова COBOL</span></p>
+                                    <p>Системний стандарт <span>Мова C Денніса Рітчі та ОС UNIX</span></p>
+                                    <p>Структурна надійність <span>Типізація та безпека у Pascal і Ada</span></p>
+                                </div>
+                            </div>
+                            <div class="visual-frame">
+                                <canvas class="point-cloud-canvas" data-shape="tower"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 3 -->
+                        <div class="tab-panel">
+                            <div class="panel-text">
+                                <h2>Спадковість мов та ООП</h2>
+                                <p>Як ідеї ALGOL, Smalltalk та C сформували генеалогічне дерево сучасних мов — від C++, Java та C# до інтерактивного JavaScript і чистого функціонального коду.</p>
+                                <a href="tree.html" class="btn-white learn-more-btn">ДІЗНАТИСЯ БІЛЬШЕ</a>
+
+                                <div class="highlights-section">
+                                    <h4>Ключові віхи</h4>
+                                    <p>Об'єктна парадигма <span>Smalltalk, C++, Java та платформа C#</span></p>
+                                    <p>Веб-революція <span>Інтерактивний JavaScript, PHP та Python</span></p>
+                                    <p>Математична чистота <span>Незмінні дані у Haskell та F#</span></p>
+                                </div>
+                            </div>
+                            <div class="visual-frame">
+                                <canvas class="point-cloud-canvas" data-shape="chess"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 4 -->
+                        <div class="tab-panel">
+                            <div class="panel-text">
+                                <h2>AI та майбутнє програмування</h2>
+                                <p>Нова ера розробки поєднує Python і гібридний Mojo для штучного інтелекту, безпеку пам'яті Rust, WebAssembly та оркестрацію AI-агентів природною мовою.</p>
+                                <a href="future.html" class="btn-white learn-more-btn">ДІЗНАТИСЯ БІЛЬШЕ</a>
+
+                                <div class="highlights-section">
+                                    <h4>Ключові віхи</h4>
+                                    <p>Штучний інтелект <span>Екосистема Python, PyTorch та Mojo</span></p>
+                                    <p>Безпека компілятора <span>Захист пам'яті без збирача сміття у Rust</span></p>
+                                    <p>Горизонт 2030-х <span>Квантові мови Q# та декларативний код</span></p>
+                                </div>
+                            </div>
+                            <div class="visual-frame">
+                                <canvas class="point-cloud-canvas" data-shape="dna"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Огляд усіх розділів проєкту під каруселлю -->
+        <section class="container home-sections-preview" style="padding: 40px 32px 130px;">
+            <div style="margin-bottom: 32px;">
+                <p style="color: #38bdf8; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;">
+                    // НАВІГАЦІЯ ПРОЄКТОМ
+                </p>
+                <h2 style="font-size: 1.85rem; color: #ffffff;">Досліджуйте еволюцію коду</h2>
+            </div>
+
+            <div class="home-nav-grid">
+                <a href="epochs.html" class="card home-nav-card">
+                    <div class="card-body">
+                        <span class="home-card-num">01 / Хронологія</span>
+                        <h3>Епохи розвитку</h3>
+                        <p>8 ключових етапів: від перфокарт та ENIAC до веб-революції й функціональної парадигми.</p>
+                        <span class="home-card-link">Перейти до хронології →</span>
+                    </div>
+                </a>
+
+                <a href="tree.html" class="card home-nav-card">
+                    <div class="card-body">
+                        <span class="home-card-num">02 / Класифікація</span>
+                        <h3>Дерево мов</h3>
+                        <p>Інтерактивна схема спадковості від Fortran і C до сучасних мов із прикладами синтаксису.</p>
+                        <span class="home-card-link">Відкрити дерево мов →</span>
+                    </div>
+                </a>
+
+                <a href="future.html" class="card home-nav-card">
+                    <div class="card-body">
+                        <span class="home-card-num">03 / Тренди 2026+</span>
+                        <h3>AI та майбутнє</h3>
+                        <p>Як штучний інтелект, Rust, Mojo та квантові обчислення змінюють професію програміста.</p>
+                        <span class="home-card-link">Дослідити майбутнє →</span>
+                    </div>
+                </a>
+
+                <a href="sources.html" class="card home-nav-card">
+                    <div class="card-body">
+                        <span class="home-card-num">04 / Бібліографія</span>
+                        <h3>Використані джерела</h3>
+                        <p>Наукова література, історичні архіви, специфікації мов та аналітичні індекси.</p>
+                        <span class="home-card-link">Переглянути джерела →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Плаваючий пошуковий рядок -->
+    <div class="floating-bar">
+        <input type="text" class="floating-input" id="searchInput" placeholder="Пошук мови або епохи...">
+        <button class="floating-btn" id="searchBtn" aria-label="Пошук">→</button>
+    </div>
+<footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">evolprog</a>
+                <p class="footer-desc">Інтерактивний освітній вебпроєкт про історію, парадигми та майбутнє мов програмування.</p>
+            </div>
+
+            <div class="footer-nav">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© 2026 evolprog. Усі права захищено.</span>
+            <span class="footer-author">Виконала: <strong>Манзюк Дарія</strong>, група <strong>3КН-26б</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

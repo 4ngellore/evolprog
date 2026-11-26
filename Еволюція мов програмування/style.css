@@ -1,0 +1,2138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --bg-main: #000000;
+    --bg-surface: #08080b;
+    --bg-card: #0f0f14;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --accent-blue: #0033ff;
+    --accent-blue-hover: #1e4dff;
+    --accent-cyan: #38bdf8;
+    --border-dark: #22222a;
+    --gradient-brand: linear-gradient(135deg, #0033ff 0%, #38bdf8 100%);
+    --radius-pill: 9999px;
+    --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* === ШТОРКА ПЕРЕХОДУ МІЖ СТОРІНКАМИ === */
+.page-transition {
+    position: fixed;
+    inset: 0;
+    background: #000000;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.45s var(--ease-out-expo);
+}
+
+.page-transition.loaded {
+    opacity: 0;
+}
+
+/* === АНІМАЦІЯ ПОЯВИ ПРИ СКРОЛІ === */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* === НАВІГАЦІЯ === */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-dark);
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    padding: 4px 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 18px rgba(0, 51, 255, 0.4);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.35s var(--ease-out-expo);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.btn-nav {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn-nav:hover {
+    background: var(--accent-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 51, 255, 0.55);
+}
+
+/* === БІЛА ОВАЛЬНА КНОПКА === */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.35s var(--ease-out-expo), transform 0.35s var(--ease-out-expo);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: #ffffff;
+    color: #000000;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-blue);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-out-expo);
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* === STICKY SCROLL ТА ПЛАВНЕ ПЕРЕТІКАННЯ ВКЛАДОК === */
+.scroll-tabs-track {
+    position: relative;
+    height: 320vh;
+}
+
+.sticky-tabs-viewport {
+    position: sticky;
+    top: 80px;
+    min-height: calc(100vh - 80px);
+    background: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.full-tabs-bar {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #141418;
+    border: 1px solid var(--border-dark);
+    overflow: hidden;
+}
+
+.tab-glider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(135deg, #0033ff 0%, #0055ff 100%);
+    box-shadow: 0 0 28px rgba(0, 51, 255, 0.45);
+    transition: transform 0.85s var(--ease-out-expo);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.tab-btn {
+    position: relative;
+    z-index: 2;
+    padding: 22px 16px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border-dark);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.45s ease;
+    text-align: center;
+}
+
+.tab-btn:last-child {
+    border-right: none;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: #ffffff;
+}
+
+/* === КАРУСЕЛЬ МІНІ-СТОРІНОК === */
+.panels-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.panels-track {
+    display: flex;
+    width: 400%;
+    transition: transform 0.85s var(--ease-out-expo);
+    will-change: transform;
+}
+
+.tab-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    width: 25%;
+    flex-shrink: 0;
+    padding: 44px 2px;
+    opacity: 0.35;
+    transform: scale(0.96);
+    transition: opacity 0.75s ease, transform 0.85s var(--ease-out-expo);
+}
+
+.tab-panel.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.tab-panel h2 {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.tab-panel p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+    max-width: 500px;
+}
+
+.highlights-section {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-dark);
+}
+
+.highlights-section h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.highlight-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+}
+
+.highlight-row a {
+    color: #0033ff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
+.highlight-row a:hover {
+    color: var(--accent-cyan);
+}
+
+/* === ПРАВЕ ВІКНО З 3D-ГРАФІКОЮ === */
+.visual-frame {
+    border: 1px solid #27272f;
+    background: #000000;
+    width: 100%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.visual-frame canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* === ПЛАВАЮЧА ПАНЕЛЬ ПОШУКУ ЗНИЗУ ЕКРАНА === */
+.floating-bar {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 520px;
+    background: rgba(18, 18, 24, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    padding: 8px 8px 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    z-index: 900;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-bar:focus-within {
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 50px rgba(0, 51, 255, 0.3);
+}
+
+.floating-bar input {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    width: 100%;
+    outline: none;
+}
+
+.floating-bar input::placeholder {
+    color: var(--text-secondary);
+}
+
+.floating-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 9px;
+    background: var(--accent-blue);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.floating-btn:hover {
+    background: var(--accent-blue-hover);
+    transform: scale(1.05);
+}
+
+/* === СЕКЦІЇ ТА КАРТКИ ДЛЯ ІНШИХ СТОРІНОК === */
+.hero {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-cyan);
+    margin-bottom: 14px;
+    display: block;
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 4.8vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.text-gradient {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 620px;
+}
+
+.section {
+    padding: 88px 0;
+}
+
+.section-subtle {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.section-header {
+    max-width: 720px;
+    margin-bottom: 48px;
+}
+
+.section-header h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    overflow: hidden;
+    transition: border-color 0.35s ease, transform 0.45s var(--ease-out-expo);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-6px);
+}
+
+.card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.card-link {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    text-decoration: none;
+}
+
+.tabs-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    padding: 10px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    color: var(--text-primary);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.filter-btn.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.code-window {
+    background: #09090d;
+    border: 1px solid var(--border-dark);
+    padding: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    overflow-x: auto;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-dark);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.dots { display: flex; gap: 6px; }
+.dots span { width: 10px; height: 10px; border-radius: 50%; background: #27272a; }
+.kw { color: #38bdf8; }
+.str { color: #34d399; }
+.cmt { color: #71717a; font-style: italic; }
+.fn { color: #818cf8; }
+
+.quote-card {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent-blue);
+    padding: 24px;
+}
+
+.footer {
+    background: #000000;
+    border-top: 1px solid var(--border-dark);
+    padding: 64px 0 96px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.footer h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 10px; }
+.footer a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
+.footer a:hover { color: #fff; }
+
+.footer-bottom {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 960px) {
+    .scroll-tabs-track { height: auto; }
+    .sticky-tabs-viewport { position: static; }
+    .full-tabs-bar { grid-template-columns: 1fr; }
+    .tab-glider { display: none; }
+    .tab-btn.active { background: var(--accent-blue); }
+    .panels-track { display: block; width: 100%; transform: none !important; }
+    .tab-panel { width: 100%; grid-template-columns: 1fr; display: none; opacity: 1; transform: none; }
+    .tab-panel.active { display: grid; }
+    .grid-3, .grid-2, .footer-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+/* === ОКРЕМІ ВКЛАДКИ З РАМКАМИ ТА ОВАЛЬНИЙ ПОШУК (ЯК НА 2 СКРІНШОТІ) === */
+.full-tabs-bar {
+    background: transparent !important;
+    border: none !important;
+    gap: 10px;
+    overflow: visible !important;
+}
+
+.tab-btn {
+    background: #141418 !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    border-radius: 6px;
+    transition: color 0.45s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.tab-btn:hover {
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.tab-btn.active {
+    background: transparent !important; /* Пропускає синій повзунок .tab-glider */
+    border-color: #3b82f6 !important;
+}
+
+/* Синій повзунок з урахуванням проміжків gap: 10px між 4 кнопками */
+.tab-glider {
+    width: calc((100% - 30px) / 4) !important;
+    border-radius: 6px;
+    border: 1px solid #3b82f6;
+    background: #0033ff !important;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* Овальна плаваюча панель пошуку як на 2 скріншоті */
+.floating-bar {
+    border-radius: 9999px !important;
+    padding: 8px 10px 8px 26px !important;
+    background: linear-gradient(180deg, rgba(30, 32, 42, 0.92) 0%, rgba(16, 17, 22, 0.96) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    max-width: 580px !important;
+}
+
+.floating-btn {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: #0033ff !important;
+}
+/* === ТОЧНА КОМПОЗИЦІЯ ЯК НА 1 СКРІНШОТІ STATWORX === */
+.section-lead-title {
+    font-size: clamp(2.1rem, 3.6vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 36px;
+}
+
+.sticky-tabs-viewport {
+    justify-content: flex-start !important;
+    padding-top: 12px;
+}
+
+/* Тонка ледь помітна рамка у неактивних кнопок, як на 1 скріні */
+.tab-btn {
+    border: 1px solid #2a2a33 !important;
+    background: #141418 !important;
+    border-radius: 6px !important;
+}
+
+/* Синя кнопка без світлої обводки — чиста заливка #0033ff */
+.tab-btn.active {
+    border-color: transparent !important;
+}
+
+.tab-glider {
+    border: none !important;
+    box-shadow: none !important;
+    background: #0033ff !important;
+}
+
+/* Компактніша висота панелей, щоб нижній рядок пошуку не налізав на текст */
+.tab-panel {
+    padding: 36px 2px !important;
+}
+
+.visual-frame {
+    height: 410px !important;
+}
+
+.highlights-section {
+    margin-top: 28px !important;
+    padding-top: 18px !important;
+}
+/* === ФІКС ПЕРЕЛИВАННЯ КНОПОК ТА МЕЖ СЛАЙДІВ === */
+.full-tabs-bar {
+    gap: 3px !important; /* Мінімальний акуратний проміжок, як у statworx */
+    background: transparent !important;
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.04) !important; /* Напівпрозорий фон, крізь який видно рух синьої плашки */
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 5px !important;
+    z-index: 2;
+}
+
+.tab-glider {
+    width: calc((100% - 9px) / 4) !important; /* Точна ширина з урахуванням gap: 3px */
+    border-radius: 5px !important;
+    background: #0033ff !important;
+    z-index: 1 !important;
+}
+
+/* Прибираємо зайвий padding у <main>, щоб карусель 400% не з'їжджала вправо */
+main.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.panels-viewport {
+    padding: 0 32px;
+}
+
+.tab-panel {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+/* === ЛЕДЬ ПОМІТНИЙ СІРИЙ КОНТУР ТІЛЬКИ ДЛЯ КНОПОК ВКЛАДОК === */
+.tab-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 6px !important;
+}
+
+.tab-btn:hover {
+    border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+.tab-btn.active {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.tab-glider {
+    border-radius: 6px !important;
+}
+/* === ЗБАЛАНСОВАНИЙ ТА ВУЖЧИЙ ЕФЕКТ ПРОЖЕКТОРА (SPOTLIGHT) === */
+.card {
+    position: relative;
+    overflow: hidden;
+    --mouse-x: -500px;
+    --mouse-y: -500px;
+}
+
+/* Вужче та м'якше синьо-блакитне сяйво всередині картки */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        260px circle at var(--mouse-x) var(--mouse-y),
+        rgba(0, 85, 255, 0.24),
+        rgba(56, 189, 248, 0.1) 40%,
+        transparent 75%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Вужчий світловий акцент на рамці картки */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1.5px;
+    background: radial-gradient(
+        220px circle at var(--mouse-x) var(--mouse-y),
+        rgba(125, 211, 252, 0.85),
+        rgba(0, 85, 255, 0.45) 45%,
+        transparent 80%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.card:hover::before,
+.card:hover::after {
+    opacity: 1;
+}
+
+.card:hover {
+    box-shadow: 0 12px 30px rgba(0, 51, 255, 0.14);
+}
+
+.card-body {
+    position: relative;
+    z-index: 3;
+}
+/* === ЧИСТЕ ПЕРЕЛИВАННЯ КНОПОК БЕЗ СВІТЛОГО КОНТУРУ ПО КРАЯХ === */
+.full-tabs-bar {
+    background: #141418 !important; /* Темно-сірий фон, який видно в проміжках */
+    border: none !important;        /* Прибираємо тонкий світло-сірий контур по краях */
+    border-radius: 8px !important;
+    padding: 3px !important;
+    gap: 4px !important;
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.04) !important; /* Напівпрозорий фон, щоб не перекривати синій рух */
+    border: none !important;
+    border-radius: 6px !important;
+    z-index: 2;
+}
+
+.tab-btn.active {
+    background: transparent !important;
+}
+
+.tab-glider {
+    top: 3px !important;
+    left: 3px !important;
+    height: calc(100% - 6px) !important;
+    width: calc((100% - 18px) / 4) !important;
+    border-radius: 6px !important;
+    background: #0033ff !important;
+    z-index: 1 !important;
+}
+/* === ПРИХОВУЄМО КРАЙ НАСТУПНОЇ СТОРІНКИ СПРАВА === */
+.panels-viewport {
+    overflow: hidden !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+}
+
+.panels-track {
+    width: 400% !important;
+    display: flex !important;
+}
+
+.tab-panel {
+    width: 25% !important;
+    flex: 0 0 25% !important;
+    box-sizing: border-box !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+}
+/* === КОМПАКТНА ВИСОТА, ЩОБ УСЯ СЕКЦІЯ ПОВНІСТЮ ВМІЩУВАЛАСЯ НА ЕКРАНІ === */
+.sticky-tabs-viewport {
+    padding-top: 8px !important;
+}
+
+.sticky-tabs-viewport > .container {
+    padding-top: 12px !important;
+}
+
+.tab-panel {
+    padding-top: 22px !important;
+    padding-bottom: 90px !important; /* Залишає вільний простір знизу під рядок пошуку */
+}
+
+.tab-panel h2 {
+    font-size: clamp(2rem, 3.2vw, 2.8rem) !important;
+    margin-bottom: 14px !important;
+}
+
+.tab-panel p {
+    margin-bottom: 20px !important;
+}
+
+.visual-frame {
+    height: 360px !important; /* Трохи нижча рамка 3D-фігури, щоб її нижній край було повністю видно */
+}
+
+.highlights-section {
+    margin-top: 20px !important;
+    padding-top: 14px !important;
+}
+
+.floating-bar,
+.floating-search-wrapper {
+    bottom: 18px !important;
+}
+/* === ІДЕАЛЬНА ВИСОТА РАМКИ В РІВЕНЬ ІЗ ЛІВИМ БЛОКОМ === */
+.visual-frame {
+    height: 370px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.visual-frame canvas {
+    transform: scale(0.95) !important;
+    transform-origin: center center;
+}
+/* === ЦЕНТРУВАННЯ ПУНКТІВ МЕНЮ В ШАПЦІ ПО СЕРЕДИНІ СТОРІНКИ === */
+.nav-inner {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+.nav-links {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 32px !important;
+}
+
+/* На мобільних екранах повертаємо звичайний потік, щоб меню не накладалося на логотип */
+@media (max-width: 768px) {
+    .nav-inner {
+        justify-content: space-between !important;
+    }
+    .nav-links {
+        position: static !important;
+        transform: none !important;
+        gap: 16px !important;
+    }
+}
+/* === СТОРІНКА ДЖЕРЕЛ (SOURCES.HTML) === */
+.sources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.source-card {
+    background: #111116;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 28px 30px;
+}
+
+.source-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+}
+
+.source-card h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 18px;
+}
+
+.source-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.source-list li {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    padding-left: 14px;
+    border-left: 2px solid rgba(56, 189, 248, 0.35);
+}
+
+.source-list a {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.source-list a:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+@media (max-width: 820px) {
+    .sources-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* === ПЛАВНИЙ ТА СИНХРОННИЙ РУХ СИНЬОЇ ПЛАШКИ І СЛАЙДІВ БЕЗ СМИКАННЯ === */
+.tab-glider,
+.panels-track {
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    will-change: transform;
+}
+
+.tab-btn:active {
+    transform: none !important; /* Прибираємо стандартне мікро-зміщення кнопки при натисканні */
+}
+/* === ІНТЕРАКТИВНА ХРОНОЛОГІЯ З ІЛЮСТРАЦІЯМИ (EPOCHS.HTML) === */
+.epochs-hero {
+    margin-bottom: 56px;
+}
+
+.epochs-kicker {
+    color: #38bdf8;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.epochs-subtitle {
+    color: rgba(255, 255, 255, 0.74);
+    max-width: 720px;
+    line-height: 1.65;
+    margin-top: 16px;
+}
+
+.timeline-wrapper {
+    position: relative;
+    padding-left: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 11px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(180deg, #0033ff 0%, #38bdf8 50%, rgba(56, 189, 248, 0.15) 100%);
+}
+
+.timeline-row {
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -31px;
+    top: 34px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #050508;
+    border: 2.5px solid #38bdf8;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.65);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.timeline-row:hover .timeline-dot {
+    background: #0033ff;
+    transform: scale(1.25);
+}
+
+.timeline-card {
+    background: #101015;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 10px;
+    padding: 28px 32px;
+}
+
+.timeline-content {
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    align-items: center;
+    gap: 32px;
+}
+
+.timeline-content.reverse .timeline-text {
+    order: 2;
+}
+
+.timeline-content.reverse .timeline-visual {
+    order: 1;
+}
+
+.timeline-visual svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.timeline-card:hover .timeline-visual svg {
+    transform: scale(1.03);
+}
+
+.epoch-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.epoch-num {
+    font-size: 0.82rem;
+    color: #38bdf8;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.epoch-badge {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(0, 85, 255, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 4px 11px;
+    border-radius: 999px;
+}
+
+.timeline-card h3 {
+    font-size: 1.42rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.32;
+}
+
+.timeline-card p {
+    font-size: 0.96rem;
+    line-height: 1.68;
+    color: rgba(255, 255, 255, 0.76);
+    margin: 0;
+}
+
+.timeline-card strong {
+    color: #93c5fd;
+    font-weight: 600;
+}
+
+@media (max-width: 860px) {
+    .timeline-content {
+        grid-template-columns: 1fr;
+    }
+    .timeline-content.reverse .timeline-text,
+    .timeline-content.reverse .timeline-visual {
+        order: unset;
+    }
+}
+/* === ВИПРАВЛЕННЯ ВИДИМОСТІ КАРТОК ТА СТИЛЮ ЛОГОТИПУ === */
+.timeline-row,
+.timeline-row.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+.navbar .logo,
+.navbar .logo:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 8px 16px;
+    font-weight: 700;
+}
+/* === СТОРІНКА ГЕНЕАЛОГІЧНОГО ДЕРЕВА МОВ (TREE.HTML) === */
+.tree-hero {
+    margin-bottom: 44px;
+}
+
+.tree-kicker {
+    color: #38bdf8;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.tree-subtitle {
+    color: rgba(255, 255, 255, 0.74);
+    max-width: 720px;
+    line-height: 1.65;
+    margin-top: 16px;
+}
+
+.tree-diagram-box {
+    background: #0e0e13;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+}
+
+.diagram-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.diagram-tag {
+    display: block;
+    font-size: 0.75rem;
+    color: #38bdf8;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+
+.diagram-header h2 {
+    font-size: 1.45rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.diagram-hint {
+    font-size: 0.86rem;
+    color: #93c5fd;
+    background: rgba(0, 85, 255, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 8px 14px;
+    border-radius: 6px;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.svg-tree-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.genealogy-svg {
+    width: 100%;
+    min-width: 780px;
+    height: auto;
+    display: block;
+}
+
+.tree-edge {
+    stroke: rgba(255, 255, 255, 0.18);
+    stroke-width: 1.8;
+    transition: stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.tree-edge.active-edge {
+    stroke: #38bdf8;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.75));
+}
+
+.tree-node {
+    cursor: pointer;
+}
+
+.tree-node rect {
+    fill: #15151d;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1.4;
+    transition: fill 0.25s ease, stroke 0.25s ease;
+}
+
+.tree-node.core-node rect {
+    fill: rgba(0, 51, 255, 0.22);
+    stroke: #38bdf8;
+}
+
+.tree-node:hover rect {
+    fill: rgba(0, 85, 255, 0.32);
+    stroke: #38bdf8;
+}
+
+.node-title {
+    fill: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-anchor: middle;
+}
+
+.node-year {
+    fill: #93c5fd;
+    font-size: 10.5px;
+    font-family: monospace;
+    text-anchor: middle;
+}
+
+/* Фільтри парадигм */
+.paradigm-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.filter-pill {
+    background: #14141a;
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-pill:hover {
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.filter-pill.active {
+    background: #0033ff;
+    color: #ffffff;
+    border-color: #0033ff;
+}
+
+/* Каталог карток мов */
+.langs-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.lang-card {
+    background: #101015;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 26px 28px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lang-card.highlight-card {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.3) !important;
+}
+
+.lang-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.lang-year {
+    font-size: 0.8rem;
+    color: #38bdf8;
+}
+
+.lang-paradigm {
+    font-size: 0.74rem;
+    color: #93c5fd;
+    background: rgba(0, 85, 255, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.lang-card h3 {
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.lang-card p {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 16px;
+}
+
+.code-snippet {
+    background: #08080b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 0;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #93c5fd;
+}
+
+@media (max-width: 820px) {
+    .langs-catalog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* === СТОРІНКА AI ТА МАЙБУТНЄ КОДУ (FUTURE.HTML) === */
+.future-hero {
+    margin-bottom: 48px;
+}
+
+.future-kicker {
+    color: #38bdf8;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.future-subtitle {
+    color: rgba(255, 255, 255, 0.76);
+    max-width: 780px;
+    line-height: 1.68;
+    margin-top: 16px;
+    font-size: 1.02rem;
+}
+
+.future-vectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.vector-card {
+    background: #101015;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 28px 30px;
+}
+
+.vector-card .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.vector-tag {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.vector-card h3 {
+    font-size: 1.38rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.vector-card p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.76);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.vector-stack {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+/* Інтерактивний блок порівняння підходів */
+.paradigm-shift-box {
+    background: #0e0e14;
+    border: 1px solid rgba(56, 189, 248, 0.24);
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 48px;
+}
+
+.shift-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.shift-header h2 {
+    font-size: 1.55rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.shift-tabs {
+    display: flex;
+    gap: 8px;
+    background: #16161e;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shift-btn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.shift-btn:hover {
+    color: #ffffff;
+}
+
+.shift-btn.active {
+    background: #0033ff;
+    color: #ffffff;
+}
+
+.shift-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 32px;
+    align-items: center;
+}
+
+.shift-grid.hidden {
+    display: none;
+}
+
+.shift-text h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.shift-text p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.76);
+    margin-bottom: 18px;
+}
+
+.shift-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shift-list li {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.82);
+    padding-left: 14px;
+    border-left: 2px solid #38bdf8;
+}
+
+.shift-list strong {
+    color: #93c5fd;
+}
+
+.shift-code-box {
+    background: #08080c;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-box-title {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 8px 14px;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Нижня секція: погляд у 2030-ті */
+.deep-intro {
+    margin-bottom: 28px;
+}
+
+.deep-intro h2 {
+    font-size: 1.65rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.deep-intro p {
+    color: rgba(255, 255, 255, 0.74);
+    max-width: 740px;
+    line-height: 1.65;
+}
+
+.future-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.pillar-card {
+    background: #101015;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 26px;
+}
+
+.pillar-badge {
+    display: inline-block;
+    font-size: 0.74rem;
+    color: #93c5fd;
+    background: rgba(0, 85, 255, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.pillar-card h3 {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.pillar-card p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+}
+
+.pillar-card strong {
+    color: #93c5fd;
+}
+
+@media (max-width: 900px) {
+    .future-vectors-grid,
+    .shift-grid,
+    .future-pillars {
+        grid-template-columns: 1fr;
+    }
+}
+/* === КАРТКИ-ПЕРЕХОДИ НА РОЗДІЛИ ПІД КАРУСЕЛЛЮ (INDEX.HTML) === */
+.home-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.home-nav-card {
+    background: #101015;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 24px;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.home-nav-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.5);
+}
+
+.home-nav-card .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.home-card-num {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.home-nav-card h3 {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.home-nav-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.home-card-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #60a5fa;
+}
+
+@media (max-width: 960px) {
+    .home-nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .home-nav-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* === ПІДСВІЧУВАННЯ ЦІЛЬОВОГО БЛОКУ ПІСЛЯ ПЕРЕХОДУ ЗА КНОПКОЮ «ДІЗНАТИСЯ БІЛЬШЕ» === */
+.anchor-highlight,
+.anchor-highlight .timeline-card {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 32px rgba(56, 189, 248, 0.35) !important;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+/* === КНОПКА «ДІЗНАТИСЯ БІЛЬШЕ» У СТИЛІ EVOLPROG ТА ПЛАВНИЙ ЯКІР === */
+html {
+    scroll-behavior: smooth;
+}
+
+.timeline-row {
+    scroll-margin-top: 100px;
+}
+
+a.btn-white,
+a.btn-white:visited,
+.learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ffffff !important;
+    color: #050508 !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 13px 26px;
+    border-radius: 999px;
+    border: 1px solid #ffffff;
+    margin: 22px 0 28px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.12);
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+a.btn-white:hover,
+.learn-more-btn:hover {
+    background: #0033ff !important;
+    color: #ffffff !important;
+    border-color: #38bdf8;
+    box-shadow: 0 0 24px rgba(0, 85, 255, 0.55);
+    transform: translateY(-2px);
+}
+
+.highlights-section h4 {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.highlights-section p {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 8px;
+}
+
+.highlights-section p span {
+    color: #3b82f6;
+    font-weight: 500;
+    margin-left: 8px;
+}
+/* === ФІКСАЦІЯ КАРУСЕЛІ ПРИ ПРОКРУЧУВАННІ НА ГОЛОВНІЙ СТОРІНЦІ === */
+@media (min-width: 961px) {
+    .scroll-tabs-wrapper {
+        height: 400vh !important;
+        position: relative;
+    }
+
+    .sticky-tabs-container {
+        position: sticky !important;
+        top: 72px;
+        height: calc(100vh - 72px);
+        display: flex;
+        align-items: flex-start;
+        padding-top: 24px;
+        overflow: hidden;
+    }
+}
+/* === НАПІВПРОЗОРИЙ КОМПАКТНИЙ СКЛЯНИЙ ПОШУК ПО ШИРИНІ ТЕКСТУ === */
+.floating-bar,
+.floating-search-wrapper {
+    width: max-content !important;
+    max-width: calc(100vw - 32px) !important;
+    padding: 6px 8px 6px 20px !important;
+    gap: 12px !important;
+    border-radius: 999px !important;
+    background: rgba(16, 18, 28, 0.55) !important;
+    backdrop-filter: blur(16px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.floating-bar input,
+.floating-input {
+    width: 28ch !important;
+    min-width: 0 !important;
+    flex: none !important;
+    padding: 6px 0 !important;
+    font-size: 0.9rem !important;
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+
+.floating-bar input::placeholder,
+.floating-input::placeholder {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.floating-btn {
+    width: 38px !important;
+    height: 38px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+}
+
+@media (max-width: 600px) {
+    .floating-bar input,
+    .floating-input {
+        width: 24ch !important;
+    }
+}
+/* === ПІДВАЛ САЙТУ (FOOTER) НА ВСІХ СТОРІНКАХ === */
+.site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: #08080c;
+    padding: 44px 0 36px;
+    margin-top: 40px;
+}
+
+/* Додатковий відступ знизу на головній, щоб плаваючий пошук не закривав футер */
+body:has(#scrollTabsTrack) .site-footer {
+    padding-bottom: 96px;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand .logo {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.footer-desc {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.9rem;
+    max-width: 420px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    align-items: center;
+    padding-top: 6px;
+}
+
+.footer-nav a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: #38bdf8;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 22px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-author strong {
+    color: #93c5fd;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .footer-inner,
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* === СТОРІНКА ДЖЕРЕЛ (SOURCES.HTML) — РІВНА СІТКА ТА КАРТКИ === */
+.sources-hero {
+    margin-bottom: 42px;
+}
+
+.sources-kicker {
+    color: #38bdf8;
+    font-family: monospace;
+    font-size: 0.84rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.sources-subtitle {
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 720px;
+    line-height: 1.65;
+    margin-top: 14px;
+    font-size: 1rem;
+}
+
+.sources-primary-grid,
+.sources-secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.sources-primary-grid {
+    margin-bottom: 24px;
+}
+
+.source-card {
+    background: #101016 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.source-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.45) !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+
+.source-card .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 28px 30px !important;
+}
+
+.source-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.source-num {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    letter-spacing: 0.04em;
+}
+
+.source-domain {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.source-card h3 {
+    font-size: 1.32rem;
+    line-height: 1.35;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.source-card p {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 22px;
+    flex-grow: 1;
+}
+
+.source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #60a5fa;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: auto;
+    transition: color 0.2s ease;
+}
+
+.source-link span {
+    transition: transform 0.2s ease;
+}
+
+.source-link:hover {
+    color: #93c5fd;
+}
+
+.source-link:hover span {
+    transform: translateX(4px);
+}
+
+.source-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.source-list li {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.source-list li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.source-list a {
+    color: #93c5fd;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.source-list a:hover {
+    color: #38bdf8;
+}
+
+.source-list span {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 820px) {
+    .sources-primary-grid,
+    .sources-secondary-grid {
+        grid-template-columns: 1fr;
+    }
+}

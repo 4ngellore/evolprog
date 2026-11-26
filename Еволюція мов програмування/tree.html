@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evolprog — Генеалогічне дерево мов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">evolprog</a>
+            <nav class="nav-links">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html" class="active">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 56px 32px 130px;">
+        <!-- Заголовок сторінки -->
+        <div class="tree-hero">
+            <p class="tree-kicker">// СПАДКОВІСТЬ ТА КЛАСИФІКАЦІЯ</p>
+            <h1 class="section-lead-title">Генеалогічне <span class="text-gradient">дерево мов</span></h1>
+            <p class="tree-subtitle">
+                Інтерактивна схема впливу мов одна на одну та каталог ключових технологій за парадигмами програмування. Наведіть на вузол дерева, щоб простежити лінію спадковості.
+            </p>
+        </div>
+
+        <!-- Інтерактивна схема зв'язків -->
+        <section class="tree-diagram-box card">
+            <div class="card-body">
+                <div class="diagram-header">
+                    <div>
+                        <span class="diagram-tag">ВІЗУАЛІЗАЦІЯ ЗВ'ЯЗКІВ</span>
+                        <h2>Схема спадковості мов програмування</h2>
+                    </div>
+                    <div class="diagram-hint" id="treeInfoBox">
+                        Наведіть або натисніть на мову в схемі
+                    </div>
+                </div>
+
+                <div class="svg-tree-scroll">
+                    <svg class="genealogy-svg" viewBox="0 0 960 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Лінії зв'язків -->
+                        <g class="tree-edges">
+                            <!-- 1950-ті -> 1970-ті -->
+                            <path class="tree-edge" data-from="fortran" data-to="algol" d="M130 95 C 185 95, 185 155, 240 155"/>
+                            <path class="tree-edge" data-from="algol" data-to="c" d="M360 155 C 410 155, 410 155, 460 155"/>
+                            <path class="tree-edge" data-from="algol" data-to="pascal" d="M360 155 C 410 155, 410 65, 460 65"/>
+                            <path class="tree-edge" data-from="smalltalk" data-to="objc" d="M360 285 C 410 285, 410 285, 460 285"/>
+                            <path class="tree-edge" data-from="objc" data-to="cpp" d="M580 285 C 625 285, 625 235, 670 235"/>
+
+                            <!-- C -> нащадки -->
+                            <path class="tree-edge" data-from="c" data-to="cpp" d="M580 155 C 625 155, 625 235, 670 235"/>
+                            <path class="tree-edge" data-from="c" data-to="python" d="M580 155 C 625 155, 625 65, 670 65"/>
+                            <path class="tree-edge" data-from="c" data-to="js" d="M580 155 C 625 155, 625 335, 670 335"/>
+
+                            <!-- C++ -> сучасні мови -->
+                            <path class="tree-edge" data-from="cpp" data-to="java" d="M790 235 C 825 235, 825 145, 850 145"/>
+                            <path class="tree-edge" data-from="cpp" data-to="csharp" d="M790 235 C 825 235, 825 235, 850 235"/>
+                            <path class="tree-edge" data-from="cpp" data-to="rust" d="M790 235 C 825 235, 825 325, 850 325"/>
+                            <path class="tree-edge" data-from="python" data-to="swift" d="M790 65 C 825 65, 825 65, 850 65"/>
+                        </g>
+
+                        <!-- Колона 1: Витоки (1950-ті) -->
+                        <g class="tree-node" data-id="fortran" data-desc="Fortran (1957) — перша високорівнева мова для наукових обчислень">
+                            <rect x="20" y="72" width="110" height="46" rx="8"/>
+                            <text x="75" y="93" class="node-title">Fortran</text>
+                            <text x="75" y="109" class="node-year">1957</text>
+                        </g>
+
+                        <!-- Колона 2: База синтаксису та ООП -->
+                        <g class="tree-node" data-id="algol" data-desc="ALGOL 60 (1960) — запровадив блочну структуру коду">
+                            <rect x="240" y="132" width="120" height="46" rx="8"/>
+                            <text x="300" y="153" class="node-title">ALGOL</text>
+                            <text x="300" y="169" class="node-year">1960</text>
+                        </g>
+
+                        <g class="tree-node" data-id="smalltalk" data-desc="Smalltalk (1972) — еталон чистого об'єктно-орієнтованого підходу">
+                            <rect x="240" y="262" width="120" height="46" rx="8"/>
+                            <text x="300" y="283" class="node-title">Smalltalk</text>
+                            <text x="300" y="299" class="node-year">1972</text>
+                        </g>
+
+                        <!-- Колона 3: Революція 1970-х -->
+                        <g class="tree-node" data-id="pascal" data-desc="Pascal (1970) — структурне програмування та сувора типізація">
+                            <rect x="460" y="42" width="120" height="46" rx="8"/>
+                            <text x="520" y="63" class="node-title">Pascal</text>
+                            <text x="520" y="79" class="node-year">1970</text>
+                        </g>
+
+                        <g class="tree-node" data-id="c" data-desc="Мова C (1972) — фундамент операційних систем і батько C-сімейства">
+                            <rect x="460" y="132" width="120" height="46" rx="8"/>
+                            <text x="520" y="153" class="node-title">Мова C</text>
+                            <text x="520" y="169" class="node-year">1972</text>
+                        </g>
+
+                        <g class="tree-node" data-id="objc" data-desc="Objective-C (1984) — поєднала мову C з об'єктною моделлю Smalltalk">
+                            <rect x="460" y="262" width="120" height="46" rx="8"/>
+                            <text x="520" y="283" class="node-title">Objective-C</text>
+                            <text x="520" y="299" class="node-year">1984</text>
+                        </g>
+
+                        <!-- Колона 3: Революція 1970-х -->
+                        <g class="tree-node" data-id="pascal" data-desc="Pascal (1970) — структурне програмування та сувора типізація">
+                            <rect x="460" y="42" width="120" height="46" rx="8"/>
+                            <text x="520" y="63" class="node-title">Pascal</text>
+                            <text x="520" y="79" class="node-year">1970</text>
+                        </g>
+
+                        <g class="tree-node core-node" data-id="c" data-desc="Мова C (1972) — фундамент операційних систем і батько C-сімейства">
+                            <rect x="460" y="132" width="120" height="46" rx="8"/>
+                            <text x="520" y="153" class="node-title">Мова C</text>
+                            <text x="520" y="169" class="node-year">1972</text>
+                        </g>
+                                                <!-- Колона 4: 1980–1990-ті -->
+                        <g class="tree-node" data-id="python" data-desc="Python (1991) — читабельність, лаконічність та лідерство в AI">
+                            <rect x="670" y="42" width="120" height="46" rx="8"/>
+                            <text x="730" y="63" class="node-title">Python</text>
+                            <text x="730" y="79" class="node-year">1991</text>
+                        </g>
+
+                        <g class="tree-node" data-id="cpp" data-desc="C++ (1985) — поєднав швидкість C із класами та ООП">
+                            <rect x="670" y="212" width="120" height="46" rx="8"/>
+                            <text x="730" y="233" class="node-title">C++</text>
+                            <text x="730" y="249" class="node-year">1985</text>
+                        </g>
+
+                        <g class="tree-node" data-id="js" data-desc="JavaScript (1995) — мова інтерактивного вебу та браузерів">
+                            <rect x="670" y="312" width="120" height="46" rx="8"/>
+                            <text x="730" y="333" class="node-title">JavaScript</text>
+                            <text x="730" y="349" class="node-year">1995</text>
+                        </g>
+
+                        <!-- Колона 5: Сучасні екосистеми -->
+                        <g class="tree-node" data-id="swift" data-desc="Swift (2014) — сучасна безпечна мова для екосистеми Apple">
+                            <rect x="850" y="42" width="95" height="46" rx="8"/>
+                            <text x="897" y="63" class="node-title">Swift</text>
+                            <text x="897" y="79" class="node-year">2014</text>
+                        </g>
+
+                        <g class="tree-node" data-id="java" data-desc="Java (1995) — кросплатформна ООП-мова («написано один раз — працює всюди»)">
+                            <rect x="850" y="122" width="95" height="46" rx="8"/>
+                            <text x="897" y="143" class="node-title">Java</text>
+                            <text x="897" y="159" class="node-year">1995</text>
+                        </g>
+
+                        <g class="tree-node" data-id="csharp" data-desc="C# (2000) — сучасна типізована мова платформи .NET">
+                            <rect x="850" y="212" width="95" height="46" rx="8"/>
+                            <text x="897" y="233" class="node-title">C#</text>
+                            <text x="897" y="249" class="node-year">2000</text>
+                        </g>
+
+                        <g class="tree-node" data-id="rust" data-desc="Rust (2015) — системна продуктивність із гарантією безпеки пам'яті">
+                            <rect x="850" y="302" width="95" height="46" rx="8"/>
+                            <text x="897" y="323" class="node-title">Rust</text>
+                            <text x="897" y="339" class="node-year">2015</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Фільтр за парадигмами -->
+        <div class="paradigm-filter-bar" id="paradigmFilters">
+            <button class="filter-pill active" data-filter="all">Усі мови (8)</button>
+            <button class="filter-pill" data-filter="system">Системні</button>
+            <button class="filter-pill" data-filter="oop">Об'єктно-орієнтовані</button>
+            <button class="filter-pill" data-filter="web">Веб та скрипти</button>
+            <button class="filter-pill" data-filter="functional">Функціональні</button>
+        </div>
+
+        <!-- Картки мов із прикладами коду -->
+        <section class="langs-catalog-grid" id="oop-tree">
+            <!-- C -->
+            <article class="card lang-card" data-lang="c" data-category="system">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">1972 · Денніс Рітчі</span>
+                        <span class="lang-paradigm">Системна</span>
+                    </div>
+                    <h3>Мова C</h3>
+                    <p>Еталон низькорівневої ефективності та портативності. Сформувала синтаксис більшості сучасних мов.</p>
+                    <pre class="code-snippet"><code>#include &lt;stdio.h&gt;
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+                </div>
+            </article>
+
+            <!-- C++ -->
+            <article class="card lang-card" data-lang="cpp" data-category="system oop">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">1985 · Б'ярн Страуструп</span>
+                        <span class="lang-paradigm">Системна / ООП</span>
+                    </div>
+                    <h3>C++</h3>
+                    <p>Розширив C об'єктно-орієнтованими класами та шаблонами. Основа ігрових рушіїв і високопродуктивних систем.</p>
+                    <pre class="code-snippet"><code>#include &lt;iostream&gt;
+int main() {
+    std::cout &lt;&lt; "C++ Speed\n";
+}</code></pre>
+                </div>
+            </article>
+
+            <!-- C# -->
+            <article class="card lang-card" data-lang="csharp" data-category="oop">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">2000 · Андерс Гейлсберг</span>
+                        <span class="lang-paradigm">ООП / .NET</span>
+                    </div>
+                    <h3>C#</h3>
+                    <p>Елегантна суворо типізована мова для вебсервісів, корпоративних систем, десктопу та ігор на Unity.</p>
+                    <pre class="code-snippet"><code>using System;
+Console.WriteLine("Modern C#");</code></pre>
+                </div>
+            </article>
+
+            <!-- Java -->
+            <article class="card lang-card" data-lang="java" data-category="oop">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">1995 · Джеймс Гослінг</span>
+                        <span class="lang-paradigm">ООП / JVM</span>
+                    </div>
+                    <h3>Java</h3>
+                    <p>Зробила масовим принцип кросплатформності завдяки віртуальній машині JVM та суворій структурі класів.</p>
+                    <pre class="code-snippet"><code>public class Main {
+    public static void main(String[] a) {
+        System.out.println("JVM Ready");
+    }
+}</code></pre>
+                </div>
+            </article>
+
+            <!-- Python -->
+            <article class="card lang-card" data-lang="python" data-category="web oop">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">1991 · Гвідо ван Россум</span>
+                        <span class="lang-paradigm">Скриптова / AI</span>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Максимальна читабельність синтаксису та головний стандарт у машинному навчанні, аналізі даних і автоматизації.</p>
+                    <pre class="code-snippet"><code>languages = ["C", "Python", "Rust"]
+print([lang.upper() for lang in languages])</code></pre>
+                </div>
+            </article>
+
+            <!-- JavaScript -->
+            <article class="card lang-card" data-lang="js" data-category="web">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">1995 · Брендан Айк</span>
+                        <span class="lang-paradigm">Веб / Подієва</span>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Головна мова браузерів, що перетворила статичні вебсторінки на повноцінні інтерактивні вебзастосунки.</p>
+                    <pre class="code-snippet"><code>document.querySelector("button")
+  .addEventListener("click", () =&gt; alert("Hi!"));</code></pre>
+                </div>
+            </article>
+
+            <!-- Rust -->
+            <article class="card lang-card" data-lang="rust" data-category="system">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">2015 · Ґрейдон Гор</span>
+                        <span class="lang-paradigm">Системна / Безпека</span>
+                    </div>
+                    <h3>Rust</h3>
+                    <p>Поєднує швидкість C++ із гарантією безпеки пам'яті на етапі компіляції без збирача сміття.</p>
+                    <pre class="code-snippet"><code>fn main() {
+    let msg = "Memory Safe!";
+    println!("{}", msg);
+}</code></pre>
+                </div>
+            </article>
+
+            <!-- Haskell -->
+            <article class="card lang-card" data-lang="haskell" data-category="functional">
+                <div class="card-body">
+                    <div class="lang-top">
+                        <span class="lang-year">1990 · Комітет дослідників</span>
+                        <span class="lang-paradigm">Функціональна</span>
+                    </div>
+                    <h3>Haskell</h3>
+                    <p>Чиста функціональна мова з незмінними даними та відсутністю побічних ефектів для надійних обчислень.</p>
+                    <pre class="code-snippet"><code>factorial :: Integer -&gt; Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)</code></pre>
+                </div>
+            </article>
+        </section>
+    </main>
+
+
+<footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">evolprog</a>
+                <p class="footer-desc">Інтерактивний освітній вебпроєкт про історію, парадигми та майбутнє мов програмування.</p>
+            </div>
+
+            <div class="footer-nav">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© 2026 evolprog. Усі права захищено.</span>
+            <span class="footer-author">Виконала: <strong>Манзюк Дарія</strong>, група <strong>3КН-26б</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

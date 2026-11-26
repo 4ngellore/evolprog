@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evolprog — Епохи розвитку мов програмування</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">evolprog</a>
+            <nav class="nav-links">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html" class="active">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 56px 32px 130px;">
+        <div class="epochs-hero">
+            <p class="epochs-kicker">// ІНТЕРАКТИВНА ХРОНОЛОГІЯ ЕВОЛЮЦІЇ</p>
+            <h1 class="section-lead-title">Епохи розвитку мов програмування</h1>
+            <p class="epochs-subtitle">
+                Мови програмування — це фундамент сучасних технологій. Пройдіть шлях від бінарних перфокарт та лампових гігантів до сучасних високорівневих екосистем, що сформували цифровий світ.
+            </p>
+        </div>
+
+        <div class="timeline-wrapper">
+            <div class="timeline-line"></div>
+
+            <!-- ЕПОХА 01 -->
+            <section class="timeline-row reveal" id="epoch-1">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">01 / 1940-ві</span>
+                                <span class="epoch-badge">0 та 1 · Перфокарти</span>
+                            </div>
+                            <h3>Народження програмування: машинний код</h3>
+                            <p>
+                                На світанку комп'ютерної ери не існувало ані IDE, ані зрозумілих людині команд — техніка розуміла лише послідовності одиниць і нулів. Такий код виконувався процесором миттєво, але писати й читати його було так само складно, як набирати роман на друкарській машинці з однією клавішею або розшифровувати книгу азбукою Морзе.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <text x="32" y="48" fill="#38bdf8" font-family="monospace" font-size="13" opacity="0.9">01001000 01100101 01101100</text>
+                                <text x="32" y="74" fill="#60a5fa" font-family="monospace" font-size="13" opacity="0.65">10110010 00101110 11010001</text>
+                                <text x="32" y="100" fill="#0033ff" font-family="monospace" font-size="13" opacity="0.95">00011101 11100010 01010101</text>
+                                <rect x="32" y="122" width="216" height="24" rx="4" fill="rgba(0,85,255,0.14)" stroke="rgba(56,189,248,0.35)"/>
+                                <circle cx="52" cy="134" r="4" fill="#38bdf8"/>
+                                <circle cx="72" cy="134" r="4" fill="#1e293b"/>
+                                <circle cx="92" cy="134" r="4" fill="#38bdf8"/>
+                                <circle cx="112" cy="134" r="4" fill="#38bdf8"/>
+                                <circle cx="132" cy="134" r="4" fill="#1e293b"/>
+                                <text x="158" y="138" fill="#93c5fd" font-family="monospace" font-size="10">BINARY CORE</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ЕПОХА 02 -->
+            <section class="timeline-row reveal">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content reverse">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">02 / Кінець 1940-х</span>
+                                <span class="epoch-badge">ADD · SUB · MOV</span>
+                            </div>
+                            <h3>Мова асемблера та гігант ENIAC</h3>
+                            <p>
+                                Асемблер замінив нескінченні ряди бітів короткими символічними командами — мнемоніками. Перші такі програми створювалися ще для гігантського комп'ютера <strong>ENIAC</strong> розміром із кімнату. Попри крок уперед, розробка залишалася прив'язаною до конкретного процесора і нагадувала набір тексту без автокорекції: одна помилка в регістрі зупиняла всю програму.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <rect x="28" y="28" width="96" height="124" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.14)"/>
+                                <text x="40" y="54" fill="#38bdf8" font-family="monospace" font-size="12">MOV AX, 01h</text>
+                                <text x="40" y="78" fill="#93c5fd" font-family="monospace" font-size="12">ADD AX, BX</text>
+                                <text x="40" y="102" fill="#60a5fa" font-family="monospace" font-size="12">SUB CX, 04h</text>
+                                <text x="40" y="126" fill="#38bdf8" font-family="monospace" font-size="12">JMP 0x00F4</text>
+                                <path d="M132 90H162" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 3"/>
+                                <rect x="166" y="42" width="84" height="96" rx="8" fill="rgba(0,51,255,0.16)" stroke="#38bdf8"/>
+                                <text x="184" y="84" fill="#ffffff" font-family="monospace" font-size="13" font-weight="bold">CPU</text>
+                                <text x="178" y="106" fill="#93c5fd" font-family="monospace" font-size="10">REGISTERS</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ЕПОХА 03 -->
+            <section class="timeline-row reveal" id="epoch-3">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">03 / 1950-ті</span>
+                                <span class="epoch-badge">Fortran · COBOL</span>
+                            </div>
+                            <h3>Перші високорівневі мови</h3>
+                            <p>
+                                Зі зростанням потужності комп'ютерів виникла потреба абстрагуватися від апаратних деталей. <strong>Fortran</strong> став першою масовою мовою для наукових та інженерних розрахунків (і досі використовується в суперкомп'ютерних системах), а <strong>COBOL</strong> із синтаксисом, близьким до англійської мови, відкрив програмування для бізнесу та фінансів.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <rect x="28" y="28" width="224" height="52" rx="6" fill="rgba(0,85,255,0.12)" stroke="rgba(56,189,248,0.4)"/>
+                                <text x="42" y="50" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold">FORTRAN // SCIENCE</text>
+                                <text x="42" y="68" fill="#e2e8f0" font-family="monospace" font-size="11">E = M * C ** 2</text>
+                                <rect x="28" y="96" width="224" height="54" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)"/>
+                                <text x="42" y="118" fill="#93c5fd" font-family="monospace" font-size="11" font-weight="bold">COBOL // BUSINESS</text>
+                                <text x="42" y="136" fill="#cbd5e1" font-family="monospace" font-size="11">ADD SALARY TO TOTAL.</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ЕПОХА 04 -->
+            <section class="timeline-row reveal" id="epoch-4">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content reverse">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">04 / 1970-ті</span>
+                                <span class="epoch-badge">C · Pascal · Ada</span>
+                            </div>
+                            <h3>Народження сучасного програмування</h3>
+                            <p>
+                                Поява мови <strong>C</strong> стала революцією: вона поєднала прямий доступ до пам'яті зі зручністю високорівневих конструкцій, давши змогу писати операційні системи на кшталт UNIX і забезпечуючи портативність коду між різними машинами. Паралельно <strong>Pascal</strong> та <strong>Ada</strong> заклали стандарти структурованого та безпечного програмування.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <circle cx="140" cy="90" r="52" fill="rgba(0,51,255,0.16)" stroke="#38bdf8" stroke-width="1.5"/>
+                                <circle cx="140" cy="90" r="34" fill="rgba(56,189,248,0.12)" stroke="#60a5fa"/>
+                                <text x="131" y="97" fill="#ffffff" font-family="monospace" font-size="24" font-weight="bold">C</text>
+                                <rect x="24" y="30" width="58" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                                <text x="36" y="46" fill="#93c5fd" font-family="monospace" font-size="10">UNIX</text>
+                                <rect x="198" y="30" width="58" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                                <text x="208" y="46" fill="#93c5fd" font-family="monospace" font-size="10">PASCAL</text>
+                                <rect x="198" y="126" width="58" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                                <text x="214" y="142" fill="#93c5fd" font-family="monospace" font-size="10">ADA</text>
+                                <rect x="24" y="126" width="66" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                                <text x="31" y="142" fill="#93c5fd" font-family="monospace" font-size="10">PORTABLE</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+    <!-- ЕПОХА 05 -->
+            <section class="timeline-row reveal">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">05 / 1980-ті</span>
+                                <span class="epoch-badge">C++ · Smalltalk · Java</span>
+                            </div>
+                            <h3>Розквіт об'єктно-орієнтованого підходу</h3>
+                            <p>
+                                ООП змінило спосіб мислення розробників, об'єднавши дані та поведінку в цілісні об'єкти: замість опису окремих деталей (двигуна чи коліс) проєктується весь «автомобіль» як єдина сутність. Це зробило код придатним для повторного використання та легшим у підтримці, а згодом вивело в лідери індустрії мову <strong>Java</strong>.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <rect x="75" y="24" width="130" height="44" rx="6" fill="rgba(0,85,255,0.2)" stroke="#38bdf8"/>
+                                <text x="104" y="44" fill="#ffffff" font-family="monospace" font-size="11" font-weight="bold">class Vehicle</text>
+                                <text x="98" y="59" fill="#93c5fd" font-family="monospace" font-size="10">+ speed, + drive()</text>
+                                <path d="M115 68L78 104M165 68L202 104" stroke="#38bdf8" stroke-width="1.5"/>
+                                <rect x="26" y="106" width="102" height="44" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"/>
+                                <text x="46" y="132" fill="#e2e8f0" font-family="monospace" font-size="11">Car : Vehicle</text>
+                                <rect x="152" y="106" width="102" height="44" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"/>
+                                <text x="168" y="132" fill="#e2e8f0" font-family="monospace" font-size="11">Truck : Vehicle</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ЕПОХА 06 -->
+            <section class="timeline-row reveal">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content reverse">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">06 / 1990-ті</span>
+                                <span class="epoch-badge">JavaScript · PHP · Python</span>
+                            </div>
+                            <h3>Веб-революція та інтерактивність</h3>
+                            <p>
+                                Бурхливий розвиток інтернету вимагав живих вебсторінок замість статичного HTML. Поява <strong>JavaScript</strong> дозволила сайтам миттєво реагувати на дії користувача в браузері, а на серверній стороні популярність здобули <strong>PHP</strong> та <strong>Python</strong> завдяки простому синтаксису й багатим бібліотекам.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <rect x="28" y="26" width="224" height="128" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.16)"/>
+                                <line x1="28" y1="48" x2="252" y2="48" stroke="rgba(255,255,255,0.14)"/>
+                                <circle cx="42" cy="37" r="3.5" fill="#38bdf8"/>
+                                <circle cx="54" cy="37" r="3.5" fill="#60a5fa"/>
+                                <circle cx="66" cy="37" r="3.5" fill="#1d4ed8"/>
+                                <rect x="44" y="64" width="90" height="72" rx="6" fill="rgba(0,85,255,0.18)" stroke="#38bdf8"/>
+                                <text x="62" y="96" fill="#ffffff" font-family="monospace" font-size="12" font-weight="bold">JS DOM</text>
+                                <text x="56" y="114" fill="#93c5fd" font-family="monospace" font-size="10">onClick()</text>
+                                <rect x="148" y="64" width="88" height="32" rx="6" fill="rgba(255,255,255,0.06)"/>
+                                <text x="166" y="84" fill="#cbd5e1" font-family="monospace" font-size="11">PHP API</text>
+                                <rect x="148" y="104" width="88" height="32" rx="6" fill="rgba(255,255,255,0.06)"/>
+                                <text x="160" y="124" fill="#cbd5e1" font-family="monospace" font-size="11">Python Web</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ЕПОХА 07 -->
+            <section class="timeline-row reveal">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">07 / Сьогодення</span>
+                                <span class="epoch-badge">Python · Swift · Ruby</span>
+                            </div>
+                            <h3>Сучасна епоха: універсальність і швидкість</h3>
+                            <p>
+                                Сучасні мови поєднують високу читабельність коду та швидкість розробки. <strong>Python</strong> став головним стандартом у науці про дані, машинному навчанні та автоматизації, <strong>Ruby</strong> прискорив створення вебсервісів, а <strong>Swift</strong> від Apple перетворився на основний інструмент для мобільної екосистеми iOS.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <rect x="26" y="34" width="70" height="112" rx="8" fill="rgba(0,85,255,0.18)" stroke="#38bdf8"/>
+                                <text x="38" y="86" fill="#ffffff" font-family="monospace" font-size="12" font-weight="bold">Python</text>
+                                <text x="41" y="104" fill="#93c5fd" font-family="monospace" font-size="9">AI &amp; Data</text>
+                                <rect x="105" y="34" width="70" height="112" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"/>
+                                <text x="121" y="86" fill="#ffffff" font-family="monospace" font-size="12" font-weight="bold">Swift</text>
+                                <text x="118" y="104" fill="#93c5fd" font-family="monospace" font-size="9">iOS Apps</text>
+                                <rect x="184" y="34" width="70" height="112" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)"/>
+                                <text x="203" y="86" fill="#ffffff" font-family="monospace" font-size="12" font-weight="bold">Ruby</text>
+                                <text x="196" y="104" fill="#93c5fd" font-family="monospace" font-size="9">Web Dev</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ЕПОХА 08 -->
+            <section class="timeline-row reveal">
+                <div class="timeline-dot"></div>
+                <article class="card timeline-card">
+                    <div class="card-body timeline-content reverse">
+                        <div class="timeline-text">
+                            <div class="epoch-meta">
+                                <span class="epoch-num">08 / Парадигма чистоти</span>
+                                <span class="epoch-badge">Haskell · F#</span>
+                            </div>
+                            <h3>Зростання функціонального програмування</h3>
+                            <p>
+                                Функціональні мови спираються на математичні функції та незмінні дані. Це допомагає уникати непередбачуваних змін стану програми (побічних ефектів) і надійно керувати складними системами — справжня суперздібність для написання чистого коду з мінімумом помилок.
+                            </p>
+                        </div>
+                        <div class="timeline-visual">
+                            <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="260" height="160" rx="10" fill="#09090d" stroke="rgba(56,189,248,0.28)"/>
+                                <rect x="28" y="64" width="56" height="52" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)"/>
+                                <text x="48" y="94" fill="#e2e8f0" font-family="monospace" font-size="14">x</text>
+                                <path d="M88 90H112" stroke="#38bdf8" stroke-width="2"/>
+                                <rect x="114" y="56" width="64" height="68" rx="10" fill="rgba(0,85,255,0.22)" stroke="#38bdf8"/>
+                                <text x="132" y="94" fill="#ffffff" font-family="monospace" font-size="14" font-weight="bold">f(x)</text>
+                                <path d="M182 90H204" stroke="#38bdf8" stroke-width="2"/>
+                                <rect x="206" y="64" width="52" height="52" rx="8" fill="rgba(56,189,248,0.16)" stroke="#60a5fa"/>
+                                <text x="226" y="94" fill="#93c5fd" font-family="monospace" font-size="14">y</text>
+                                <text x="86" y="148" fill="#38bdf8" font-family="monospace" font-size="10">IMMUTABLE · PURE</text>
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+<footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">evolprog</a>
+                <p class="footer-desc">Інтерактивний освітній вебпроєкт про історію, парадигми та майбутнє мов програмування.</p>
+            </div>
+
+            <div class="footer-nav">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© 2026 evolprog. Усі права захищено.</span>
+            <span class="footer-author">Виконала: <strong>Манзюк Дарія</strong>, група <strong>3КН-26б</strong></span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

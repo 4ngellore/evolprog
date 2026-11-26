@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evolprog — AI та майбутнє коду</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">evolprog</a>
+            <nav class="nav-links">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html" class="active">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 56px 32px 130px;">
+        <!-- Вступний блок -->
+        <div class="future-hero">
+            <p class="future-kicker">// КЛЮЧОВІ ВЕКТОРИ ТА ТРАНСФОРМАЦІЯ</p>
+            <h1 class="section-lead-title">AI та <span class="text-gradient">майбутнє коду</span></h1>
+            <p class="future-subtitle">
+                Ми стоїмо на порозі найбільшого зсуву в історії програмування з часів появи високорівневих компіляторів. Сучасні мови еволюціонують у двох напрямках одночасно: максимальна апаратна швидкість із гарантією безпеки пам'яті та тісна інтеграція зі штучним інтелектом, де природна мова стає новим рівнем абстракції.
+            </p>
+        </div>
+
+        <!-- 4 ключові вектори сучасності -->
+        <section class="future-vectors-grid" id="ai-vectors">
+            <article class="card vector-card">
+                <div class="card-body">
+                    <span class="vector-tag">01 / Artificial Intelligence</span>
+                    <h3>AI-орієнтована розробка</h3>
+                    <p>
+                        Python виступає зручним інтерфейсом для високоефективних C++/CUDA ядер (PyTorch, TensorFlow), а великі мовні моделі перетворюються на повноцінних напарників інженера — від генерації архітектури до автоматичного пошуку вразливостей.
+                    </p>
+                    <div class="vector-stack">Стек: Python, Mojo, CUDA</div>
+                </div>
+            </article>
+
+            <article class="card vector-card">
+                <div class="card-body">
+                    <span class="vector-tag">02 / Memory Safety</span>
+                    <h3>Безпека пам'яті на рівні компілятора</h3>
+                    <p>
+                        Понад 70% критичних вразливостей у великих програмних системах пов'язані з помилками роботи з пам'яттю. Мови нового покоління на кшталт Rust вирішують цю проблему архітектурно на етапі компіляції без втрати швидкодії.
+                    </p>
+                    <div class="vector-stack">Стек: Rust, Swift, Carbon</div>
+                </div>
+            </article>
+
+            <article class="card vector-card">
+                <div class="card-body">
+                    <span class="vector-tag">03 / Cloud &amp; Concurrency</span>
+                    <h3>Нативна багатопотоковість</h3>
+                    <p>
+                        Хмарна та мікросервісна архітектура вимагає мов, здатних легко обробляти мільйони паралельних запитів із мінімальним споживанням ресурсів завдяки легковаговим потокам та асинхронним моделям виконання.
+                    </p>
+                    <div class="vector-stack">Стек: Go, Elixir, C#</div>
+                </div>
+            </article>
+
+            <article class="card vector-card">
+                <div class="card-body">
+                    <span class="vector-tag">04 / Universal Runtime</span>
+                    <h3>WebAssembly та кросплатформність</h3>
+                    <p>
+                        Браузер перестав бути територією виключно JavaScript. Технологія WebAssembly (Wasm) дозволяє запускати код на C++, Rust чи C# безпосередньо у вебсередовищі на швидкості, близькій до нативної.
+                    </p>
+                    <div class="vector-stack">Стек: WebAssembly, TypeScript</div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Інтерактивне порівняння епох розробки -->
+        <section class="card paradigm-shift-box">
+            <div class="card-body">
+                <div class="shift-header">
+                    <div>
+                        <span class="vector-tag">ІНТЕРАКТИВНЕ ПОРІВНЯННЯ</span>
+                        <h2>Як змінюється роль програміста</h2>
+                    </div>
+                    <div class="shift-tabs" id="shiftTabs">
+                        <button class="shift-btn active" data-mode="classic">Класичний підхід (2010-ті)</button>
+                        <button class="shift-btn" data-mode="ai">AI-орієнтований підхід (2026+)</button>
+                    </div>
+                </div>
+
+                <div class="shift-grid" id="shiftContentClassic">
+                    <div class="shift-text">
+                        <h3>Ручне написання кожного модуля та алгоритму</h3>
+                        <p>
+                            У традиційній моделі розробник витрачає значну частину часу на написання шаблонного коду (boilerplate), ручне налаштування конфігурацій, пошук синтаксичних помилок у документації та написання однотипних модульних тестів.
+                        </p>
+                        <ul class="shift-list">
+                            <li><strong>Фокус:</strong> точний синтаксис обраної мови та низькорівнева реалізація.</li>
+                            <li><strong>Швидкість прототипування:</strong> дні або тижні на запуск базового MVP.</li>
+                            <li><strong>Головний виклик:</strong> висока ціна людської помилки та складність підтримки легасі-коду.</li>
+                        </ul>
+                    </div>
+                    <div class="shift-code-box">
+                        <div class="code-box-title">developer_workflow.py</div>
+                        <pre class="code-snippet"><code># 1. Ручне проєктування структур даних
+# 2. Написання логіки та обробки винятків
+# 3. Пошук рішень на форумах та в документації
+# 4. Ручне написання unit-тестів
+
+def process_pipeline(data):
+    validated = [x for x in data if x is not None]
+    return sum(validated) / len(validated)</code></pre>
+                    </div>
+                </div>
+
+                <div class="shift-grid hidden" id="shiftContentAi">
+                    <div class="shift-text">
+                        <h3>Архітектурне мислення та оркестрація AI-агентів</h3>
+                        <p>
+                            У сучасній парадигмі природна мова стає найвищим рівнем абстракції. Розробник формулює бізнес-логіку, обмеження безпеки та архітектуру системи, тоді як AI-моделі генерують реалізацію, тести й оптимізують продуктивність у реальному часі.
+                        </p>
+                        <ul class="shift-list">
+                            <li><strong>Фокус:</strong> системна архітектура, верифікація безпеки та постановка точних специфікацій.</li>
+                            <li><strong>Швидкість прототипування:</strong> години від ідеї до робочого застосунку.</li>
+                            <li><strong>Головний виклик:</strong> критичний аудит згенерованого коду та контроль якості.</li>
+                        </ul>
+                    </div>
+                    <div class="shift-code-box">
+                        <div class="code-box-title">ai_spec_pipeline.mojo</div>
+                        <pre class="code-snippet"><code># Специфікація наміру + апаратна оптимізація
+# AI генерує типізований, безпечний та швидкий код
+
+fn fast_tensor_mean(data: Tensor[DType.float32]) -&gt; Float32:
+    # Автоматична векторизація під GPU/CPU
+    return data.reduce_mean()</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Мови нового покоління та погляд у 2030-ті -->
+        <section class="future-deep-section">
+            <div class="deep-intro">
+                <span class="vector-tag">ТЕХНОЛОГІЇ МАЙБУТНЬОГО ДЕСЯТИЛІТТЯ</span>
+                <h2>Куди рухається еволюція синтаксису</h2>
+                <p>
+                    Замість появи сотень абсолютно нових мов індустрія рухається до конвергенції найкращих ідей: статичної типізації, функціональної чистоти та нативної підтримки паралельних обчислень.
+                </p>
+            </div>
+
+            <div class="future-pillars">
+                <article class="card pillar-card">
+                    <div class="card-body">
+                        <div class="pillar-header">
+                            <span class="pillar-badge">Мова нового покоління</span>
+                            <h3>Mojo та гібридні AI-мови</h3>
+                        </div>
+                        <p>
+                            Довгий час розробникам доводилося писати прототипи на повільному Python, а потім переписувати їх на C++ для високої швидкості. Мови на кшталт <strong>Mojo</strong> поєднують звичний синтаксис Python із продуктивністю системного рівня та прямим керуванням прискорювачами ШІ.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card pillar-card">
+                    <div class="card-body">
+                        <div class="pillar-header">
+                            <span class="pillar-badge">Квантова перспектива</span>
+                            <h3>Квантові мови програмування</h3>
+                        </div>
+                        <p>
+                            З розвитком квантових процесорів класичних бітів стає замало. Спеціалізовані інструменти — <strong>Q#</strong> від Microsoft та <strong>Qiskit</strong> — дозволяють описувати суперпозицію та квантову заплутаність кубітів для криптографії, моделювання молекул та оптимізації.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="card pillar-card">
+                    <div class="card-body">
+                        <div class="pillar-header">
+                            <span class="pillar-badge">Декларативність</span>
+                            <h3>Код як опис результату</h3>
+                        </div>
+                        <p>
+                            Замість покрокових інструкцій «як саме виконати цикл», мови майбутнього дедалі більше тяжіють до декларативного стилю: інженер описує бажаний стан системи та математичні інваріанти, а компілятор і середовище виконання самостійно обирають оптимальний план обчислень.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+
+<footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">evolprog</a>
+                <p class="footer-desc">Інтерактивний освітній вебпроєкт про історію, парадигми та майбутнє мов програмування.</p>
+            </div>
+
+            <div class="footer-nav">
+                <a href="index.html">Головна</a>
+                <a href="epochs.html">Епохи розвитку</a>
+                <a href="tree.html">Дерево мов</a>
+                <a href="future.html">AI та майбутнє</a>
+                <a href="sources.html">Джерела</a>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© 2026 evolprog. Усі права захищено.</span>
+            <span class="footer-author">Виконала: <strong>Манзюк Дарія</strong>, група <strong>3КН-26б</strong></span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
